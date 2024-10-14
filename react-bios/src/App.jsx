@@ -2,6 +2,9 @@
 
 // import CourseItem from "./components/CourseItem";
 import Courses from "./components/Courses";
+import "./App.css";
+import Button from "./components/Button";
+import Counter from "./components/Counter";
 
 const subTitle = "Vak over React en Node.js";
 const { fName, lName } = {
@@ -14,9 +17,19 @@ const courses = ["Web 1", "Web 2", "Web 3", "Mobile"];
 function App() {
   return (
     <>
-      <h1>Web 3</h1>
+      <h1 className="title">Web 3</h1>
       <h3>{subTitle}</h3>
       <p>{`Voornaam: ${fName}, Achternaam: ${lName}`}</p>
+
+      <Counter />
+
+      <Button
+        // title="APP BTN"
+        onClick={() => {
+          alert("Dit is een alert");
+        }}>
+        APP BTN
+      </Button>
 
       <Courses courses={courses} />
 
