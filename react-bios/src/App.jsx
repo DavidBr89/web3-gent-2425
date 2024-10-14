@@ -1,6 +1,6 @@
 // Enkel naam komt vanuit een dependency of third party package
 
-import CourseItem from "./components/CourseItem";
+// import CourseItem from "./components/CourseItem";
 import Courses from "./components/Courses";
 
 const subTitle = "Vak over React en Node.js";
