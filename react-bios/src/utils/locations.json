@@ -1,0 +1,24 @@
+[
+  {
+    "id": 14551,
+    "name": "Webopolis Gent",
+    "img": "mercator.jpg",
+    "address": {
+      "street": "Henleykaai",
+      "number": 84,
+      "postalCode": 9000,
+      "city": "Gent"
+    }
+  },
+  {
+    "id": 45543,
+    "name": "Webopolis Aalst",
+    "img": "aalst.jpg",
+    "address": {
+      "street": "Arbeidstraat",
+      "number": 14,
+      "postalCode": 9300,
+      "city": "Aalst"
+    }
+  }
+]

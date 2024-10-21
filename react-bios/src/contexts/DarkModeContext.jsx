@@ -1,11 +1,11 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 // STAP 1: Aanmaken van een nieuwe context
-const DarkModeContext = createContext();
+export const DarkModeContext = createContext();
 
 // STAP 2: Provider component aanmaken
 const DarkModeContextProvider = (props) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   return (
     <DarkModeContext.Provider
@@ -18,3 +18,8 @@ const DarkModeContextProvider = (props) => {
 };
 
 export default DarkModeContextProvider;
+
+// Custom hook aangemaakt
+export const useDarkMode = () => {
+  return useContext(DarkModeContext);
+};

@@ -1,0 +1,103 @@
+[
+  {
+    "backdrop_path": "kungfupanda_back.jpg",
+    "genres": ["Animatie", "Actie", "Familie", "Komedie", "Fantasie"],
+    "id": 1011985,
+    "original_language": "en",
+    "overview": "Po is gearing up to become the spiritual leader of his Valley of Peace, but also needs someone to take his place as Dragon Warrior. As such, he will train a new kung fu practitioner for the spot and will encounter a villain called the Chameleon who conjures villains from the past.",
+    "poster_path": "kungfupanda_poster.jpg",
+    "release_date": "02-03-2024",
+    "title": "Kung Fu Panda 4",
+    "duration": 94,
+    "vote_average": 71,
+    "show_times": [
+      {
+        "location_id": 14551,
+        "times": ["14:00", "19:00", "22:00"]
+      },
+      { "location_id": 45543, "times": ["14:30", "19:45"] }
+    ]
+  },
+  {
+    "backdrop_path": "godzilla_back.jpg",
+    "genres": ["Actie", "Sciencefiction", "Avontuur", "Fantasie"],
+    "id": 823464,
+    "original_language": "en",
+    "overview": "Following their explosive showdown, Godzilla and Kong must reunite against a colossal undiscovered threat hidden within our world, challenging their very existence – and our own.",
+    "poster_path": "godzilla_poster.jpg",
+    "release_date": "27-03-2024",
+    "title": "Godzilla x Kong: The New Empire",
+    "duration": 115,
+    "vote_average": 67,
+    "show_times": [
+      {
+        "location_id": 14551,
+        "times": ["19:15"]
+      },
+      { "location_id": 45543, "times": ["22:15"] }
+    ]
+  },
+  {
+    "backdrop_path": "web_back.jpg",
+    "genres": ["Actie", "Fantasie"],
+    "id": 634492,
+    "original_language": "en",
+    "overview": "Forced to confront revelations about her past, paramedic Cassandra Webb forges a relationship with three young women destined for powerful futures...if they can all survive a deadly present.",
+    "poster_path": "web_poster.jpg",
+    "release_date": "14-02-2024",
+    "title": "Madame Web",
+    "duration": 116,
+    "vote_average": 57,
+    "show_times": []
+  },
+  {
+    "backdrop_path": "imag_back.jpg",
+    "genres": ["Horror", "Mysterie", "Thriller"],
+    "id": 1125311,
+    "original_language": "en",
+    "overview": "When Jessica moves back into her childhood home with her family, her youngest stepdaughter Alice develops an eerie attachment to a stuffed bear named Chauncey she finds in the basement. Alice starts playing games with Chauncey that begin playful and become increasingly sinister. As Alice’s behavior becomes more and more concerning, Jessica intervenes only to realize Chauncey is much more than the stuffed toy bear she believed him to be.",
+    "poster_path": "imag_poster.jpg",
+    "release_date": "06-03-2024",
+    "title": "Imaginary",
+    "vote_average": 63,
+    "duration": 104,
+    "show_times": [
+      {
+        "location_id": 14551,
+        "times": ["22:00"]
+      }
+    ]
+  },
+  {
+    "backdrop_path": "omen_back.jpg",
+    "genres": ["Horror"],
+    "id": 437342,
+    "original_language": "en",
+    "overview": "When a young American woman is sent to Rome to begin a life of service to the church, she encounters a darkness that causes her to question her own faith and uncovers a terrifying conspiracy that hopes to bring about the birth of evil incarnate.",
+    "poster_path": "omen_poster.jpg",
+    "release_date": "03-04-2024",
+    "title": "The First Omen",
+    "vote_average": 67,
+    "duration": 120,
+    "show_times": [{ "location_id": 45543, "times": ["22:45"] }]
+  },
+  {
+    "backdrop_path": "wish_back.jpg",
+    "genres": ["Animatie", "Familie", "Fantasie", "Avontuur"],
+    "id": 1022796,
+    "original_language": "en",
+    "overview": "Asha, a sharp-witted idealist, makes a wish so powerful that it is answered by a cosmic force – a little ball of boundless energy called Star. Together, Asha and Star confront a most formidable foe - the ruler of Rosas, King Magnifico - to save her community and prove that when the will of one courageous human connects with the magic of the stars, wondrous things can happen.",
+    "poster_path": "wish_poster.jpg",
+    "release_date": "13-11-2023",
+    "title": "Wish",
+    "vote_average": 65,
+    "duration": 95,
+    "show_times": [
+      {
+        "location_id": 14551,
+        "times": ["14:00", "19:00"]
+      },
+      { "location_id": 45543, "times": ["14:30", "18:45"] }
+    ]
+  }
+]

@@ -1,9 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import Button from "./Button";
+import { useDarkMode } from "../contexts/DarkModeContext";
 
 const Counter = (props) => {
   const [counter, setCounter] = useState(0);
   const [history, setHistory] = useState([]);
+
+  // Gebruik maken van de context
+  // const darkModeObj = useContext(DarkModeContext);
+
+  // Gebruik makend van onze eigen hook
+  const darkModeObj = useDarkMode();
 
   // Referentie aan een JSX element
   // STAP 1: Nieuwe instantie referentie
@@ -73,6 +80,8 @@ const Counter = (props) => {
         <p>Text input</p>
         <input ref={inputRef} type="text" placeholder="Vak" />
       </div>
+
+      <p>Darkmode: {darkModeObj.isDarkMode ? "ja" : "neen"}</p>
     </div>
   );
 };
