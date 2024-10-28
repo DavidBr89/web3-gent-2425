@@ -8,7 +8,7 @@ const RootLayout = () => {
     <div>
       <Header />
 
-      <div className="max-w-4xl">
+      <div>
         <Outlet />
       </div>
 
