@@ -18,6 +18,7 @@ import Footer from "./components/Footer.jsx";
 import RootLayout from "./pages/RootLayout.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import FavoritesPage from "./pages/FavoritesPage.jsx";
+import FavoritesContextProvider from "./contexts/FavoritesContext.jsx";
 
 // ROUTER
 
@@ -68,10 +69,12 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <DarkModeContextProvider>
       {/* <Header /> */}
-      <RouterProvider router={browserRouter} />
-      {/* <App /> */}
-      {/* <Movies /> */}
-      {/* <Footer /> */}
+      <FavoritesContextProvider>
+        <RouterProvider router={browserRouter} />
+        {/* <App /> */}
+        {/* <Movies /> */}
+        {/* <Footer /> */}
+      </FavoritesContextProvider>
     </DarkModeContextProvider>
   </StrictMode>
 );

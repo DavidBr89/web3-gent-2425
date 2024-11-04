@@ -27,8 +27,6 @@ const Movie = ({ movie }) => {
       <button
         className="absolute top-4 right-4 rounded-full p-2 text-2xl text-white bg-emerald-600"
         onClick={(event) => {
-          favorites.push(movie);
-          console.log(favorites);
           event.stopPropagation();
         }}>
         <MdOutlineFavorite />
@@ -37,7 +35,7 @@ const Movie = ({ movie }) => {
       <img
         src={new URL(`../assets/${movie.poster_path}`, import.meta.url).href}
       />
-      <div className=" min-h-36">
+      <div className="min-h-36 p-2">
         <p className="font-bold text-center">{movie.title}</p>
         <p>{movie.genres.join(", ")}</p>
       </div>
