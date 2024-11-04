@@ -5,6 +5,8 @@ import "./index.css";
 import DarkModeContextProvider from "./contexts/DarkModeContext.jsx";
 import Movies from "./components/Movies.jsx";
 
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 import {
   createBrowserRouter,
   Route,
@@ -19,6 +21,7 @@ import RootLayout from "./pages/RootLayout.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import FavoritesPage from "./pages/FavoritesPage.jsx";
 import FavoritesContextProvider from "./contexts/FavoritesContext.jsx";
+import StarWarsPage from "./pages/StarWarsPage.jsx";
 
 // ROUTER
 
@@ -52,6 +55,10 @@ const browserRouter = createBrowserRouter([
         path: "favorites",
         element: <FavoritesPage />,
       },
+      {
+        path: "starwars",
+        element: <StarWarsPage />,
+      },
     ],
   },
 ]);
@@ -65,16 +72,20 @@ const browserRouter = createBrowserRouter([
 </Routes> */
 }
 
+const queryClient = new QueryClient();
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <DarkModeContextProvider>
-      {/* <Header /> */}
-      <FavoritesContextProvider>
-        <RouterProvider router={browserRouter} />
-        {/* <App /> */}
-        {/* <Movies /> */}
-        {/* <Footer /> */}
-      </FavoritesContextProvider>
-    </DarkModeContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <DarkModeContextProvider>
+        {/* <Header /> */}
+        <FavoritesContextProvider>
+          <RouterProvider router={browserRouter} />
+          {/* <App /> */}
+          {/* <Movies /> */}
+          {/* <Footer /> */}
+        </FavoritesContextProvider>
+      </DarkModeContextProvider>
+    </QueryClientProvider>
   </StrictMode>
 );

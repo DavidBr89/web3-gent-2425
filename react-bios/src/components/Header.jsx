@@ -36,7 +36,7 @@ const Header = () => {
           }>
           <MdFavorite />
         </NavLink>
-        {/* <NavLink
+        <NavLink
           to="/starwars"
           className={({ isActive }) =>
             `${
@@ -46,7 +46,7 @@ const Header = () => {
             }`
           }>
           <FaJedi />
-        </NavLink> */}
+        </NavLink>
       </div>
     </div>
   );
