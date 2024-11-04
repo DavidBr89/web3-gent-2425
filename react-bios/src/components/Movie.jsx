@@ -3,17 +3,23 @@ import React from "react";
 // Statische image importeren
 import duneImg from "../assets/dune_poster.jpg";
 
-import { MdFavorite, MdOutlineFavorite } from "react-icons/md";
+import {
+  MdFavorite,
+  MdOutlineFavorite,
+  MdOutlineFavoriteBorder,
+} from "react-icons/md";
 
 import { useNavigate } from "react-router-dom";
+import { useFavorites } from "../contexts/FavoritesContext";
 
 const Movie = ({ movie }) => {
   // Hook om te kunnen navigeren in JS code -> useNavigate();
 
   const navigate = useNavigate();
 
-  // TODO: Context aanmaken om favorieten bij te houden
-  const favorites = [];
+  const { favorites, toggleFavorite } = useFavorites();
+
+  const isInFavorite = favorites.some((f) => f.id === movie.id);
 
   return (
     <div
@@ -25,11 +31,14 @@ const Movie = ({ movie }) => {
       {/* <img src={duneImg} /> */}
 
       <button
-        className="absolute top-4 right-4 rounded-full p-2 text-2xl text-white bg-emerald-600"
+        className={`absolute top-4 right-4 rounded-full p-2 text-2xl text-white ${
+          isInFavorite ? "bg-red-600" : "bg-emerald-700"
+        }`}
         onClick={(event) => {
+          toggleFavorite(movie);
           event.stopPropagation();
         }}>
-        <MdOutlineFavorite />
+        {isInFavorite ? <MdOutlineFavorite /> : <MdOutlineFavoriteBorder />}
       </button>
 
       <img
