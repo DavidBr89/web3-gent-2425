@@ -12,32 +12,53 @@ import AddParkingsFormikPage from "./pages/AddParkingsFormikPage.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import UsersPage from "./pages/UsersPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
+import AuthContextProvider from "./contexts/AuthContext.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import RootLayout from "./layouts/RootLayout.jsx";
 
 const queryClient = new QueryClient();
 
 const browserRouter = createBrowserRouter([
   {
     path: "/",
-    element: <AddParkingsFormikPage />,
-  },
-  {
-    path: "/users",
-    element: <UsersPage />,
-  },
-  {
-    path: "/login",
-    element: <LoginPage />,
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        element: (
+          <ProtectedRoute>
+            <AddParkingsFormikPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "users",
+        element: (
+          <ProtectedRoute>
+            {/* <AdminProtectedRoute> */}
+            <UsersPage />
+            {/* </AdminProtectedRoute> */}
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "login",
+        element: <LoginPage />,
+      },
+    ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
+      {/* <AuthContextProvider> */}
       <RouterProvider router={browserRouter} />
       {/* <ParkingsListPage /> */}
       {/* <ParkingsMapPage /> */}
       {/* <AddParkingsPage /> */}
       {/* <AddParkingsFormikPage /> */}
+      {/* </AuthContextProvider> */}
     </QueryClientProvider>
   </StrictMode>
 );
