@@ -1,0 +1,16 @@
+{
+  "name": "hello-express",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "^5.0.1",
+    "global": "^4.4.0",
+    "morgan": "~1.9.1",
+    "nodemon": "^3.1.7"
+  }
+}
