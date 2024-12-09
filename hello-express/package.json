@@ -6,11 +6,16 @@
     "dev": "nodemon ./bin/www"
   },
   "dependencies": {
+    "@prisma/client": "6.0.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^16.4.7",
     "express": "^5.0.1",
     "global": "^4.4.0",
     "morgan": "~1.9.1",
     "nodemon": "^3.1.7"
+  },
+  "devDependencies": {
+    "prisma": "^6.0.1"
   }
 }

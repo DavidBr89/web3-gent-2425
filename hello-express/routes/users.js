@@ -3,7 +3,8 @@ const router = express.Router();
 
 /* GET users listing. "/users/" */
 router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
+  const message = process.env.MSG;
+  res.send(message);
 });
 
 router.post("/login", (req, res) => {
