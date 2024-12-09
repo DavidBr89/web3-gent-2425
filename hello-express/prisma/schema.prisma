@@ -21,7 +21,7 @@ model User {
   lastName   String
   email      String   @unique
   password   String
-  isVerified Boolean
+  isVerified Boolean  @default(false)
   profileId  Int?     @unique
   profile    Profile? @relation(fields: [profileId], references: [id])
 
@@ -35,4 +35,44 @@ model Profile {
   bio      String
   birthday DateTime?
   User     User?
+}
+
+// 1-N relatie
+
+model Product {
+  id          Int         @id @default(autoincrement())
+  name        String
+  price       Int
+  description String?
+  categoryId  Int
+  category    Category    @relation(fields: [categoryId], references: [id])
+  // orders      Order[]
+  orderLines  OrderLine[]
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String
+  products Product[]
+}
+
+// N-M relatie
+
+model Order {
+  id         Int         @id @default(autoincrement())
+  totalPrice Int
+  // products   Product[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  orderLines OrderLine[]
+}
+
+model OrderLine {
+  orderId   Int
+  order     Order   @relation(fields: [orderId], references: [id])
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
+  qty       Int     @default(0)
+
+  @@id([orderId, productId])
 }
