@@ -15,14 +15,24 @@ datasource db {
 
 // Achter de schermen gaat dit een User tabel aanmaken in uw DB
 model User {
-  id         Int     @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
   // String -> VARCHAR(191)
-  firstName  String  @db.VarChar(50)
+  firstName  String   @db.VarChar(50)
   lastName   String
-  email      String  @unique
+  email      String   @unique
   password   String
   isVerified Boolean
+  profileId  Int?     @unique
+  profile    Profile? @relation(fields: [profileId], references: [id])
 
   @@unique([firstName, lastName])
   @@map("users")
+}
+
+// 1-1 relatie
+model Profile {
+  id       Int       @id @default(autoincrement())
+  bio      String
+  birthday DateTime?
+  User     User?
 }
