@@ -5,6 +5,10 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
+const helmet = require("helmet");
+
+const cors = require("cors");
+
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const productsRouter = require("./routes/products");
@@ -15,6 +19,9 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(helmet());
+app.use(cors());
 // Deze lijn mag verwijderd worden
 // app.use(express.static(path.join(__dirname, "public")));
 
