@@ -2,6 +2,7 @@
 const bcrypt = require("bcrypt");
 
 const prisma = require("../config/prisma");
+const { validationResult } = require("express-validator");
 
 const UsersController = {
   getAllUsers: async (req, res) => {
@@ -35,6 +36,12 @@ const UsersController = {
   },
   getUserById: async (req, res) => {
     try {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.status(400).json(errors.array());
+      }
+
       const { id } = req.params;
 
       const user = await prisma.user.findUnique({
@@ -56,6 +63,13 @@ const UsersController = {
   },
   createUser: async (req, res) => {
     // Na validatie
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json(errors.array());
+    }
+
     const user = req.body;
 
     try {

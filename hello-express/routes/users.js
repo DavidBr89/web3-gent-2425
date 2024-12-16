@@ -2,12 +2,32 @@ const express = require("express");
 const UsersController = require("../controllers/users_controller");
 const router = express.Router();
 
+const { param, body } = require("express-validator");
+
 /* GET users listing. "/users/" */
 router.get("/", UsersController.getAllUsers);
 
-router.get("/:id", UsersController.getUserById);
+router.get(
+  "/:id",
+  [param("id").isInt().withMessage("Id moet een geheel getal zijn.")],
+  UsersController.getUserById
+);
 
-router.post("/", UsersController.createUser);
+router.post(
+  "/",
+  [
+    body("firstName").isString().notEmpty(),
+    body("lastName").isString().notEmpty(),
+    body("email").isEmail(),
+    body("password").isStrongPassword({
+      minLength: 8,
+      minNumbers: 1,
+      minSymbols: 1,
+      minUppercase: 1,
+    }),
+  ],
+  UsersController.createUser
+);
 
 router.put("/:id", UsersController.updateUser);
 
