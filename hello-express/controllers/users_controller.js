@@ -81,11 +81,18 @@ const UsersController = {
 
       res.status(201).json(newUser);
     } catch (error) {
-      res.sendStatus(500);
+      console.log(error);
+
+      res.status(500).json(error);
     }
   },
   updateUser: async (req, res) => {
-    // Na Validatie
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json(errors.array());
+    }
+
     const user = req.body;
     const { id } = req.params;
 
@@ -99,10 +106,17 @@ const UsersController = {
 
       res.json(updatedUser);
     } catch (error) {
-      res.sendStatus(500);
+      console.log(error);
+
+      res.status(500).json(error);
     }
   },
   deleteUser: async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json(errors.array());
+    }
     // Na validatie
     const { id } = req.params;
 
@@ -116,6 +130,37 @@ const UsersController = {
       res.sendStatus(204);
     } catch (error) {
       res.sendStatus(500);
+    }
+  },
+  login: async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json(errors.array());
+    }
+
+    const { email, password } = req.body;
+
+    try {
+      const user = await prisma.user.findUnique({
+        where: {
+          email: email,
+        },
+      });
+
+      if (!user) {
+        return res.sendStatus(401);
+      }
+
+      const result = await bcrypt.compare(password, user.password);
+
+      if (result) {
+        res.send("Gebruiker is ingelogd!");
+      } else {
+        res.sendStatus(401);
+      }
+    } catch (error) {
+      res.status(500).send(error);
     }
   },
 };
