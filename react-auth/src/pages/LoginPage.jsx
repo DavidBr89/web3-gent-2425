@@ -26,7 +26,7 @@ const LoginPage = () => {
         password: "",
       },
       onSubmit: ({ email, password }) => {
-        // TODO: Implementatie
+        login(email, password, navigate);
       },
       validationSchema: validationSchema,
     });

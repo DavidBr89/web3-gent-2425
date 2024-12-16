@@ -23,8 +23,11 @@ const browserRouter = createBrowserRouter([
       },
       {
         path: "/profile",
-        // TODO: Implementatie
-        element: <ProfilePage />,
+        element: (
+          <AuthProtectedRoute>
+            <ProfilePage />
+          </AuthProtectedRoute>
+        ),
       },
     ],
   },

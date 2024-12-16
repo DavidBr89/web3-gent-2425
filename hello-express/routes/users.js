@@ -3,9 +3,12 @@ const UsersController = require("../controllers/users_controller");
 const router = express.Router();
 
 const UsersValidator = require("../validators/users_validator");
+const authMiddleware = require("../middlewares/auth_middleware");
 
 /* GET users listing. "/users/" */
 router.get("/", UsersController.getAllUsers);
+
+router.get("/verify", authMiddleware, UsersController.verify);
 
 router.get("/:id", UsersValidator.idValidator, UsersController.getUserById);
 

@@ -17,7 +17,18 @@ const AuthContextProvider = (props) => {
   const login = async (email, password, navigate) => {
     setIsLoading(true);
     try {
-      // TODO: Implementatie
+      const response = await Axios.post(
+        `${BASE_URL}/users/login`,
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
+      setUser(response.data);
+      if (navigate) {
+        navigate("/profile");
+      }
     } catch (error) {
       setUser(null);
     } finally {
@@ -28,7 +39,20 @@ const AuthContextProvider = (props) => {
   const register = async (firstName, lastName, email, password, navigate) => {
     setIsLoading(true);
     try {
-      // TODO: Implementatie
+      const response = await Axios.post(
+        `${BASE_URL}/users/register`,
+        {
+          firstName,
+          lastName,
+          isVerified: false,
+          email,
+          password,
+        },
+        // Dit zorgt ervoor dat je cookies kan gebruiken
+        { withCredentials: true }
+      );
+
+      setUser(response.data);
     } catch (error) {
       setUser(null);
     } finally {
@@ -39,7 +63,11 @@ const AuthContextProvider = (props) => {
   const verify = async () => {
     setIsLoading(true);
     try {
-      // TODO: Implementatie
+      const response = await Axios.get(`${BASE_URL}/users/verify`, {
+        withCredentials: true,
+      });
+      console.log(response.data);
+      setUser(response.data);
     } catch (error) {
       setUser(null);
     } finally {

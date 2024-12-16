@@ -1,5 +1,6 @@
 // CRUD operaties
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const prisma = require("../config/prisma");
 const { validationResult } = require("express-validator");
@@ -155,13 +156,38 @@ const UsersController = {
       const result = await bcrypt.compare(password, user.password);
 
       if (result) {
-        res.send("Gebruiker is ingelogd!");
+        // Token aanmaken
+
+        const payload = {
+          sub: user.id,
+          role: "STUDENT",
+          iat: Date.now(),
+        };
+
+        const token = jwt.sign(payload, process.env.JWT_SECRET, {
+          expiresIn: "7d",
+        });
+
+        res.cookie("web3", token, {
+          httpOnly: true,
+          // Cookie kan enkel verstuurd worden bij HTTPS
+          // secure: true,
+          expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+        });
+        res.json(user);
       } else {
         res.sendStatus(401);
       }
     } catch (error) {
       res.status(500).send(error);
     }
+  },
+  verify: async (req, res) => {
+    const userId = req.userId;
+
+    // User uit databank halen en volledig user object terugsturen als response
+
+    res.json({ id: userId });
   },
 };
 
